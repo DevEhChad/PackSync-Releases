@@ -8,15 +8,11 @@ PackSync finds the modpacks you've installed with CurseForge, checks every file,
 missing or broken, and tells you when a new version is out, all in a couple of clicks.
 
 [**Download for Windows**](https://github.com/DevEhChad/PackSync-Releases/releases/latest) ·
-[Website](https://packsync.ecsgameservers.com) ·
 [What's new](CHANGELOG.md)
 
 </div>
 
 ---
-
-This repository holds the **downloads and update files** for PackSync. Installed copies of the app check its
-[Releases](https://github.com/DevEhChad/PackSync-Releases/releases) for new versions and update themselves.
 
 ## Features
 
@@ -28,20 +24,17 @@ This repository holds the **downloads and update files** for PackSync. Installed
 - **Safe by default.** PackSync backs up your `mods` folder before changing anything, waits if Minecraft is running, checks files aren't in use, and never touches your worlds.
 - **Updates itself.** New versions of PackSync install in the background.
 
-> **Coming soon:** a **Play** button that launches your modpack straight from PackSync.
+> **Coming soon:** a **Play** button that launches your modpack straight from PackSync. It's built and waiting for
+> Microsoft's approval for Minecraft sign-in.
 
-## Install
+## Getting started
 
 1. Download **`PackSync-win-Setup.exe`** from the [latest release](https://github.com/DevEhChad/PackSync-Releases/releases/latest) and run it.
-   Prefer no installer? Download **`PackSync-win-Portable.zip`**, extract it anywhere and run `PackSync.exe`.
 2. PackSync opens with your CurseForge modpacks already listed on the left. Pick one to see its status.
 3. If something needs fixing, press **Repair**. To play, press **Open CurseForge** and start the pack there.
 
 > Windows may show a SmartScreen warning because the installer isn't code-signed yet. Choose
 > **More info → Run anyway**.
-
-The other files in each release (`.nupkg`, `releases.win.json`, `RELEASES`) are used by the app to update itself;
-you don't need to download them.
 
 ### Requirements
 
@@ -59,7 +52,30 @@ In `%LOCALAPPDATA%\PackSync`. Uninstalling PackSync removes them; your Minecraft
 **My modpacks folder isn't in the usual place.**
 Open **Settings → CurseForge → Instances folder** and pick it. PackSync remembers it.
 
+## Building from source
+
+Requires the [.NET 10 SDK](https://dotnet.microsoft.com/download).
+
+```bash
+dotnet restore
+dotnet build -c Release
+dotnet test
+dotnet run --project src/PackSync.Desktop
+```
+
+| Document | What it covers |
+| --- | --- |
+| [docs/GITHUB_SETUP.md](docs/GITHUB_SETUP.md) | Step by step: private source repo, public releases repo, first release, seeing updates |
+| [docs/RELEASING.md](docs/RELEASING.md) | Building and publishing releases (GitHub Actions → public releases repo) |
+| [release-repo/README.md](release-repo/README.md) | Front page of the public releases repo (copied there with `CHANGELOG.md` on each release) |
+| [website/README.md](website/README.md) | The download site at packsync.ecsgameservers.com |
+| [docs/MICROSOFT_SIGNIN.md](docs/MICROSOFT_SIGNIN.md) | Enabling the Play button (Azure app ID + Minecraft approval) |
+| [CHANGELOG.md](CHANGELOG.md) | Release history |
+
+Built with .NET 10 and [Avalonia](https://avaloniaui.net/); self-updates with [Velopack](https://velopack.io/).
+Local configuration goes in a git-ignored `appsettings.json` next to the executable (see
+`src/PackSync.Desktop/appsettings.example.json`). No API keys or tokens are ever stored in the app.
+
 ---
 
-<sub>This README and [CHANGELOG.md](CHANGELOG.md) are updated automatically with each release.
-PackSync is not affiliated with Mojang, Microsoft or CurseForge. Minecraft is a trademark of Mojang Synergies AB.</sub>
+<sub>PackSync is not affiliated with Mojang, Microsoft or CurseForge. Minecraft is a trademark of Mojang Synergies AB.</sub>
