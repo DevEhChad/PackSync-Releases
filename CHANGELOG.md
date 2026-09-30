@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.1.1] - 2026-09-30
+
+### Changed
+- **Share links carry everything you tick.** Sharing a pack as a link (or with **Send to friend…**) no longer refuses files: your own mods and resource packs that aren't on Modrinth or CurseForge, shaders, datapacks, options and keybinds, the server list, screenshots and worlds all go along when you tick them. Mods Modrinth and CurseForge have are still downloaded from there, and the tick box *Include mods and packs that aren't on Modrinth or CurseForge* decides about the rest. Links are made for PackSync. Only programs (`.exe`, `.bat`, `.ps1`, …) can't go in a link; use **Export modpack…** for those.
+- **Options, server list and screenshots from a pack are added when you have none.** Your own settings, server list and screenshots are never replaced.
+
+### Added
+- **You decide about mod files from a pack's author.** When a pack carries mod files of its own (not from Modrinth or CurseForge), PackSync lists them before installing and asks: **Install everything** or **Skip these files**. Mods run when you play, so only install them from people you trust.
+
 ## [1.1.0] - 2026-09-30
 
 ### Added
