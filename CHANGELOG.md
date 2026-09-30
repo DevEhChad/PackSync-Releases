@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.1] - 2026-09-30
+
+### Added
+- **Mods that don't work together are caught.** PackSync reads each mod's own requirements, as Minecraft does when it starts. The Mods tab lists every problem in plain words: a missing required mod, the wrong version of one (for example "Reese's Sodium Options 2.2.4 needs Sodium 0.8.13, but 0.6.13 is installed"), mods that say they're incompatible, a mod installed twice, or a mod for another Minecraft or loader version. Each problem has buttons that fix it: **Find a … that fits** tries versions until one works with everything else, and **Install …** adds a missing mod. PackSync also checks before **Play**.
+- **Choose any version.** **Version…** on every installed mod, and **Other versions…** in the Install window, list every version for the pack's Minecraft version and loader, for when the game asks for an older or newer one.
+
+### Fixed
+- **The right version is installed.** Mods often need one exact version of another mod. Installing a mod now picks the newest version that works with the mods already in the pack (and says so when that isn't the newest), instead of always the newest. Versions a mod's author pins on Modrinth are installed as pinned, and PackSync asks first before installing a mod its author marks as incompatible with one you have.
+
 ## [1.0.0] - 2026-09-30
 
 ### Fixed
