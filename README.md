@@ -8,15 +8,11 @@ Create your own packs, add mods, resource packs, shaders and datapacks from Modr
 PackSync also finds the packs you've installed with CurseForge, checks every file and repairs anything broken.
 
 [**Download for Windows**](https://github.com/DevEhChad/PackSync-Releases/releases/latest) ·
-[Website](https://packsync.ecsgameservers.com) ·
 [What's new](CHANGELOG.md)
 
 </div>
 
 ---
-
-This repository holds the **downloads and update files** for PackSync. Installed copies of the app check its
-[Releases](https://github.com/DevEhChad/PackSync-Releases/releases) for new versions and update themselves.
 
 ## Features
 
@@ -30,19 +26,15 @@ This repository holds the **downloads and update files** for PackSync. Installed
 - **Safe by default.** Changed your mind? **Undo changes** puts a pack back exactly as it was before PackSync touched it. PackSync also backs up your `mods` folder before changing anything, waits if Minecraft is running, checks files aren't in use, and never touches your worlds.
 - **Updates itself.** New versions of PackSync install in the background.
 
-## Install
+## Getting started
 
 1. Download **`PackSync-win-Setup.exe`** from the [latest release](https://github.com/DevEhChad/PackSync-Releases/releases/latest) and run it.
-   Prefer no installer? Download **`PackSync-win-Portable.zip`**, extract it anywhere and run `PackSync.exe`.
 2. Sign in with the Microsoft account you play Minecraft with, or continue as a guest (you can sign in later from the account button at the top right).
 3. Your CurseForge modpacks are already listed on the left. To make your own, press **+** next to **My packs**.
 4. Pick a pack and press **Play**. If something needs fixing, PackSync repairs it before the game starts.
 
 > Windows may show a SmartScreen warning because the installer isn't code-signed yet. Choose
 > **More info → Run anyway**.
-
-The other files in each release (`.nupkg`, `releases.win.json`, `RELEASES`) are used by the app to update itself;
-you don't need to download them.
 
 ### Requirements
 
@@ -64,7 +56,32 @@ In `Documents\PackSync\Instances`, one folder per pack. Change it in **Settings 
 **My modpacks folder isn't in the usual place.**
 Open **Settings → CurseForge → Instances folder** and pick it. PackSync remembers it.
 
+## Building from source
+
+Requires the [.NET 10 SDK](https://dotnet.microsoft.com/download).
+
+```bash
+dotnet restore
+dotnet build -c Release
+dotnet test
+dotnet run --project src/PackSync.Desktop
+```
+
+| Document | What it covers |
+| --- | --- |
+| [docs/GITHUB_SETUP.md](docs/GITHUB_SETUP.md) | Step by step: private source repo, public releases repo, first release, seeing updates |
+| [docs/RELEASING.md](docs/RELEASING.md) | Building and publishing releases (GitHub Actions → public releases repo) |
+| [release-repo/README.md](release-repo/README.md) | Front page of the public releases repo (copied there with `CHANGELOG.md` on each release) |
+| [website/README.md](website/README.md) | The download site at packsync.ecsgameservers.com |
+| [docs/MANIFEST.md](docs/MANIFEST.md) | Pack links: CurseForge exports and `master_manifest.json`, how mods are found and installed, the review screen, protected files |
+| [proxy/README.md](proxy/README.md) | Optional CurseForge lookup proxy (Cloudflare Worker) so mods not on the PC download automatically |
+| [docs/MICROSOFT_SIGNIN.md](docs/MICROSOFT_SIGNIN.md) | Play and Microsoft sign-in: the approved Azure app, how sign-in works, turning Play off |
+| [CHANGELOG.md](CHANGELOG.md) | Release history |
+
+Built with .NET 10 and [Avalonia](https://avaloniaui.net/); self-updates with [Velopack](https://velopack.io/).
+Local configuration goes in a git-ignored `appsettings.json` next to the executable (see
+`src/PackSync.Desktop/appsettings.example.json`). No API keys or tokens are ever stored in the app.
+
 ---
 
-<sub>This README and [CHANGELOG.md](CHANGELOG.md) are updated automatically with each release.
-PackSync is not affiliated with Mojang, Microsoft or CurseForge. Minecraft is a trademark of Mojang Synergies AB.</sub>
+<sub>PackSync is not affiliated with Mojang, Microsoft or CurseForge. Minecraft is a trademark of Mojang Synergies AB.</sub>
