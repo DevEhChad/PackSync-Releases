@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.1.0] - 2026-09-30
+
+### Added
+- **Friends.** Sign in with Microsoft and open **Friends** in the sidebar. Add friends by their Xbox gamertag, accept or decline requests, and see live who's online, idle, busy or playing, and which pack. The sidebar shows unread messages and new requests. Signing in connects you to PackSync's online service with your gamertag and picture; if it can't be reached, signing in and playing work as before.
+- **Chat window with tabs.** Chats open in their own window, one tab per friend, like a browser. Double-click a friend or press **Message**; close tabs with ✕, middle-click or Ctrl+W; switch with Ctrl+Tab. A dot marks tabs with new messages, and a message from a friend whose chat isn't on screen pops up at the bottom right with **Open chat**.
+- **Your status.** Pick **Online**, **Idle**, **Busy** or **Invisible** on the Friends page. Online turns Idle by itself after 15 minutes away from PackSync, but never while you're playing: friends then see "Playing {pack}". Busy hides message pop-ups. Invisible looks offline to friends, and you still get their messages.
+- **Send to friend…** drops a pack into a friend's chat as a card with an **Install** button: one click creates the pack on their PC and installs everything. The card works for 2 hours.
+- **Share pack…** makes a link anyone can import a pack from for the next 2 hours (for example `https://packsync.ecsgameservers.com/p/Ab3xY9kQ2m`), with a one-click **Copy link**. Packs up to 50 MB fit in a link. Opened in a browser, a link shows the pack and how to import it; an expired link says so.
+- **Export modpack…** saves a pack as a `.packsync` file others can import. Mods, resource packs and shaders are listed as downloads from Modrinth or CurseForge (each with its SHA-1, and marked client-only, server-only or both). Files that aren't downloadable anywhere can be put in the file itself, and the summary tells you which. Format: [docs/PACKSYNC_FORMAT.md](docs/PACKSYNC_FORMAT.md).
+- **Share, export or send any pack:** your own, CurseForge packs and linked packs, from each pack's page or by right-clicking it in the sidebar. For a linked folder whose Minecraft version can't be read, the form asks for it.
+- **Choose what goes in.** The export form lists every file and folder of the pack with tick boxes, like CurseForge's and Modrinth's exporters. Mods, resource packs, shaders, configs and scripts are ticked; worlds, options, the server list and other folders are yours to add. Logs, passwords and caches are never included. Your choices are remembered per pack, and the summary shows how much actually goes in the file or link.
+- **Import `.packsync` files and share links:** **+ → Import a modpack** (and **Update from a link**) take `.packsync` files and share links, besides CurseForge `.zip` exports. The pack's name, Minecraft and loader version, icon and author come along; every file is checked by its SHA-1; server-only mods are skipped. If a file can't be downloaded, the rest still installs and PackSync lists what's missing under **Can't be downloaded**.
+- **Worlds, your call.** A pack can carry worlds its author ticked. When installing it, PackSync asks which worlds to add (none ticked at first). A world with the same name as one of yours is added as a copy ("My World (2)"), so your worlds are never replaced, and **Undo** removes the copy.
+- **Servers.** Run your packs as dedicated servers from PackSync:
+  - **New server from a pack** leaves out the mods only players need (Sodium, Iris, minimaps, …), keeps anything another mod needs, and downloads the right server software and Java.
+  - Each server has **Start** and **Stop**, a live console with a command box, its settings (port, message, max players, difficulty, whitelist, PvP, online mode, view distance, …) with checks for invalid values, and memory and Java options.
+  - **Stop** saves the world the way typing `stop` does; a server is only forced to stop if you ask. Closing PackSync stops running servers properly first. Servers only start once you agree to the Minecraft EULA.
+
+### Changed
+- **CurseForge mods download by themselves in every build.** PackSync's CurseForge lookup service is built into the app, so mods that aren't on your PC download in the background with no setup. The CurseForge API key stays on the service and is never in the app. **Settings → CurseForge → API proxy** can still point a PC at a different one.
+- **Fewer clicks for CurseForge mods.** When a CurseForge mod can't be downloaded directly (its author only allows downloads on CurseForge's website), PackSync uses Modrinth's copy of the exact same file (same SHA-1) when there is one. This works when checking a pack against a link, importing, and in **Install mods**. Exported and shared packs list such mods as Modrinth downloads in the first place.
+
+### Fixed
+- Importing a pack no longer forgets where its Modrinth mods came from, so they keep their names, updates and version picker on the Mods tab.
+
 ## [1.0.1] - 2026-09-30
 
 ### Added
