@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.2.0] - 2026-10-09
+
+### Changed
+- **New PackSync logo.** PackSync has a new icon: on the Setup installer, the desktop and Start menu shortcuts, the taskbar, the title bar of every PackSync window, and next to the name at the top of the sidebar.
+
 ## [1.1.1] - 2026-09-30
 
 ### Changed
